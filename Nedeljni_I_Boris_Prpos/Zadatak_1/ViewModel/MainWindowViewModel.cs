@@ -3,15 +3,19 @@ using System.Windows;
 using System.Windows.Input;
 using Zadatak_1.Command;
 using Zadatak_1.View;
+using Zadatak_1.Methods;
 
 namespace Zadatak_1.ViewModel
 {
     class MainWindowViewModel : ViewModelBase
     {
         MainWindow main;
+        Methods.Delegate d = new Methods.Delegate();
         public MainWindowViewModel(MainWindow mainOpen)
         {
             main = mainOpen;
+            //random 8 letter string into file, will be used for login
+            d.GenerateKey();
         }
 
        #region Properties
