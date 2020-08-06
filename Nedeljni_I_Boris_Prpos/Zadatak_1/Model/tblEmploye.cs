@@ -24,7 +24,7 @@ namespace Zadatak_1.Model
         public int ManagerID { get; set; }
     
         public virtual tblEducation tblEducation { get; set; }
-        public virtual tblManager tblManager { get; set; }
+        public virtual tblEmploye tblManager { get; set; }
         public virtual tblPosition tblPosition { get; set; }
         public virtual tblSector tblSector { get; set; }
         public virtual tblUser tblUser { get; set; }

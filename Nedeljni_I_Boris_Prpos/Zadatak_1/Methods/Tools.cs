@@ -87,9 +87,104 @@ namespace Zadatak_1.Methods
                 return null;
             }
         }
+        //1 sector
+        public List<tblSector> GetSector()
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<tblSector> sectorList = new List<tblSector>();
+                    sectorList = context.tblSectors.ToList();
+                    return sectorList;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+        //2position
+        public List<tblPosition> GetPosition()
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<tblPosition> positionList = new List<tblPosition>();
+                    positionList = context.tblPositions.ToList();
+                    return positionList;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+        //3 education
+        public List<tblEducation> GetEducation()
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<tblEducation> educationList = new List<tblEducation>();
+                    educationList = context.tblEducations.ToList();
+                    return educationList;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+        /// <summary>
+        /// Get random manager for employe
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public int GetRandomMenager()
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<tblManager> allManagers = context.tblManagers.ToList();
+
+                    List<int> managerIds = new List<int>();
+
+                    foreach (tblManager item in allManagers)
+                    {
+                        managerIds.Add(item.ManagerID);
+                    }
+                    Random rnd = new Random();
+
+                    if (allManagers.Count==0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        int random_index = rnd.Next(0, managerIds.Count - 1);
+                        return managerIds[random_index];
+                    }                                  
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return 0;
+            }
+        }
         public bool ValiationJMBG(string input)
         {
-            
+
             char[] array = input.ToCharArray();
 
             int counter = 0;
@@ -169,7 +264,7 @@ namespace Zadatak_1.Methods
                 return false;
             }
         }
-        public bool CheckCredentials(string username,string pasword,string jmbg)
+        public bool CheckCredentials(string username, string pasword, string jmbg)
         {
             try
             {
@@ -211,9 +306,9 @@ namespace Zadatak_1.Methods
             {
                 StreamReader sr = new StreamReader(path);
                 string line = "";
-               
-                line=sr.ReadLine();
-                
+
+                line = sr.ReadLine();
+
                 sr.Close();
 
                 return line;
@@ -241,16 +336,16 @@ namespace Zadatak_1.Methods
                     managerList = context.tblManagers.ToList();
                     List<string> mailList = new List<string>();
                     List<string> paswordList = new List<string>();
-                    
+
 
                     foreach (tblManager item in managerList)
                     {
                         mailList.Add(item.Mail);
                         paswordList.Add(item.HelpPass);
-                        
+
                     }
 
-                    if (!mailList.Contains(mail) && !paswordList.Contains(pasword) )
+                    if (!mailList.Contains(mail) && !paswordList.Contains(pasword))
                     {
                         return true;
                     }

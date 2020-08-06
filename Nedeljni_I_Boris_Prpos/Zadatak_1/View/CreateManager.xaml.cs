@@ -32,9 +32,6 @@ namespace Zadatak_1.View
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void TextBox_PreviewDragEnter(object sender, DragEventArgs e)
-        {
-
-        }
+        
     }
 }

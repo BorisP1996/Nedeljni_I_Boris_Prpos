@@ -28,7 +28,7 @@ namespace Zadatak_1.Model
         public virtual DbSet<tblAdmin> tblAdmins { get; set; }
         public virtual DbSet<tblAdminType> tblAdminTypes { get; set; }
         public virtual DbSet<tblEducation> tblEducations { get; set; }
-        public virtual DbSet<tblManager> tblEmployes { get; set; }
+        public virtual DbSet<tblEmploye> tblEmployes { get; set; }
         public virtual DbSet<tblEmployeEdit> tblEmployeEdits { get; set; }
         public virtual DbSet<tblGender> tblGenders { get; set; }
         public virtual DbSet<tblManager> tblManagers { get; set; }

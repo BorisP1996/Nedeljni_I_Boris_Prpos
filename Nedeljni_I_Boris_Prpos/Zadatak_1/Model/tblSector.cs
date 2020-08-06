@@ -17,7 +17,7 @@ namespace Zadatak_1.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblSector()
         {
-            this.tblEmployes = new HashSet<tblManager>();
+            this.tblEmployes = new HashSet<tblEmploye>();
         }
     
         public int SectorID { get; set; }
@@ -25,6 +25,6 @@ namespace Zadatak_1.Model
         public string SectorDesc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblManager> tblEmployes { get; set; }
+        public virtual ICollection<tblEmploye> tblEmployes { get; set; }
     }
 }
