@@ -17,13 +17,13 @@ namespace Zadatak_1.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblEducation()
         {
-            this.tblEmployes = new HashSet<tblEmploye>();
+            this.tblEmployes = new HashSet<tblManager>();
         }
     
         public int EducationID { get; set; }
         public string Education { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEmploye> tblEmployes { get; set; }
+        public virtual ICollection<tblManager> tblEmployes { get; set; }
     }
 }

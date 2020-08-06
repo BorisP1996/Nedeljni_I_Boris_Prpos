@@ -16,9 +16,18 @@ namespace Zadatak_1.ViewModel
             main = mainOpen;
             //random 8 letter string into file, will be used for login
             d.GenerateKey();
+            Count = 0;
         }
 
-       #region Properties
+        #region Properties
+        private int count;
+
+        public int Count
+        {
+            get { return count; }
+            set { count = value; }
+        }
+
         private string username;
         public string Username
         {
@@ -85,8 +94,6 @@ namespace Zadatak_1.ViewModel
         }
         private void LoginExecute()
         {
-
-
             try
             {
                 //Master logged in
@@ -112,6 +119,73 @@ namespace Zadatak_1.ViewModel
             {
                 return true;
             }
+        }
+        private ICommand createMan;
+        public ICommand CreateMan
+        {
+            get
+            {
+                if (createMan == null)
+                {
+                    createMan = new RelayCommand(param => CreateManExecute(), param => CanCreateManExecute());
+                }
+                return createMan;
+            }
+        }
+        private void CreateManExecute()
+        {
+            try
+            {
+                CreateManagerPassword cmp = new CreateManagerPassword();
+                cmp.ShowDialog();
+                Count = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+        }
+        private bool CanCreateManExecute()
+        {
+            if (Count>0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private ICommand createEmp;
+        public ICommand CreateEmp
+        {
+            get
+            {
+                if (createEmp == null)
+                {
+                    createEmp = new RelayCommand(param => CreateEmpExecute(), param => CanCreateEmpExecute());
+                }
+                return createEmp;
+            }
+        }
+        private void CreateEmpExecute()
+        {
+            try
+            {
+                CreateEmploye ce = new CreateEmploye();
+                ce.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+        }
+        private bool CanCreateEmpExecute()
+        {
+            return true;
         }
         #endregion
     }

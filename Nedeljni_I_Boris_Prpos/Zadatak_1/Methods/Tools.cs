@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -188,6 +189,68 @@ namespace Zadatak_1.Methods
                     }
 
                     if (!usernameList.Contains(username) && !paswordList.Contains(pasword) && !jmbgList.Contains(jmbg))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+        }
+        public string ReadKey()
+        {
+            string path = @"../../ManagerAccess.txt";
+            try
+            {
+                StreamReader sr = new StreamReader(path);
+                string line = "";
+               
+                line=sr.ReadLine();
+                
+                sr.Close();
+
+                return line;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+        /// <summary>
+        /// Unique hel pasword and mail for managers
+        /// </summary>
+        /// <param name="mail"></param>
+        /// <param name="pasword"></param>
+        /// <returns></returns>
+        public bool CheckMailPas(string mail, string pasword)
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<tblManager> managerList = new List<tblManager>();
+                    managerList = context.tblManagers.ToList();
+                    List<string> mailList = new List<string>();
+                    List<string> paswordList = new List<string>();
+                    
+
+                    foreach (tblManager item in managerList)
+                    {
+                        mailList.Add(item.Mail);
+                        paswordList.Add(item.HelpPass);
+                        
+                    }
+
+                    if (!mailList.Contains(mail) && !paswordList.Contains(pasword) )
                     {
                         return true;
                     }

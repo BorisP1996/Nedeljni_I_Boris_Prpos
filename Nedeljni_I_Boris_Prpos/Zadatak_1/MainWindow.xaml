@@ -56,5 +56,11 @@
                 Width="100"
                 Margin="640,130,0,0" 
                 Command="{Binding CreateEmp,UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Content="*1 attempt only"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="640,34,0,0"
+               Width="100"
+               FontSize="10"/>
     </Grid>
 </Window>

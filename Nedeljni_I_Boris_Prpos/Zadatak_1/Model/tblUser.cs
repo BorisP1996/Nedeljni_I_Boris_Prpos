@@ -18,7 +18,7 @@ namespace Zadatak_1.Model
         public tblUser()
         {
             this.tblAdmins = new HashSet<tblAdmin>();
-            this.tblEmployes = new HashSet<tblEmploye>();
+            this.tblEmployes = new HashSet<tblManager>();
             this.tblManagers = new HashSet<tblManager>();
         }
     
@@ -35,7 +35,7 @@ namespace Zadatak_1.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblAdmin> tblAdmins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblEmploye> tblEmployes { get; set; }
+        public virtual ICollection<tblManager> tblEmployes { get; set; }
         public virtual tblGender tblGender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblManager> tblManagers { get; set; }
