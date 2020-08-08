@@ -134,9 +134,12 @@
     <Compile Include="ViewModel\CreateEmployeViewModel.cs" />
     <Compile Include="ViewModel\CreateManagerPasswordViewModel.cs" />
     <Compile Include="ViewModel\CreateManagerViewModel.cs" />
+    <Compile Include="ViewModel\CreatePositionViewModel.cs" />
+    <Compile Include="ViewModel\CreateSectorViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MasterCreatesAdminViewModel.cs" />
     <Compile Include="ViewModel\MasterViewModel.cs" />
+    <Compile Include="ViewModel\SystemAdminViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\CreateEmploye.xaml.cs">
       <DependentUpon>CreateEmploye.xaml</DependentUpon>
@@ -147,11 +150,20 @@
     <Compile Include="View\CreateManagerPassword.xaml.cs">
       <DependentUpon>CreateManagerPassword.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CreatePosition.xaml.cs">
+      <DependentUpon>CreatePosition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateSector.xaml.cs">
+      <DependentUpon>CreateSector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Master.xaml.cs">
       <DependentUpon>Master.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MasterCreatesAdmin.xaml.cs">
       <DependentUpon>MasterCreatesAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SystemAdmin.xaml.cs">
+      <DependentUpon>SystemAdmin.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -177,11 +189,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CreatePosition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateSector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Master.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MasterCreatesAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SystemAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

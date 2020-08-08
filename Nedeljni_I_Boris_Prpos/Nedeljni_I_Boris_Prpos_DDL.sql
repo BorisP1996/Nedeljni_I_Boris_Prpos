@@ -191,7 +191,7 @@ Insert into tblGender values ('M'),('Z'),('N'),('X');
 Insert into tblEducation values ('I'),('II'),('III'),('IV'),('V'),('VI'),('VII');
 Insert into tblMarried values ('Married'),('Unmarried'),('Divorced');
 Insert into tblAdminType values ('Team'),('System'),('Local');
-
+Insert into tblSector values ('Default',null);
 
 GO
 CREATE VIEW vwEmploye AS

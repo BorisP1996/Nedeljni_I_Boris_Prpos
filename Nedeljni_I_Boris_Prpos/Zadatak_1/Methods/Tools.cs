@@ -96,7 +96,15 @@ namespace Zadatak_1.Methods
                 {
                     List<tblSector> sectorList = new List<tblSector>();
                     sectorList = context.tblSectors.ToList();
-                    return sectorList;
+                    List<tblSector> withoutDefault = new List<tblSector>();
+                    foreach (tblSector item in sectorList)
+                    {
+                        if (item.SectorName!="Default")
+                        {
+                            withoutDefault.Add(item);
+                        }
+                    }
+                    return withoutDefault;
                 }
             }
             catch (Exception ex)
@@ -142,6 +150,68 @@ namespace Zadatak_1.Methods
 
                 MessageBox.Show(ex.ToString());
                 return null;
+            }
+        }
+        public bool UniqueSector(string sectorName)
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<tblSector> sectorList = context.tblSectors.ToList();
+                    List<string> sectorNameList = new List<string>();
+
+                    foreach (tblSector item in sectorList)
+                    {
+                        sectorNameList.Add(item.SectorName);
+                    }
+
+                    if (!sectorNameList.Contains(sectorName))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+        }
+        public bool UniquePosition(string positionName)
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<tblPosition> positionList = context.tblPositions.ToList();
+                    List<string> positionNameList = new List<string>();
+
+                    foreach (tblPosition item in positionList)
+                    {
+                        positionNameList.Add(item.PoisitionName);
+                    }
+
+                    if (!positionNameList.Contains(positionName))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return false;
             }
         }
         /// <summary>

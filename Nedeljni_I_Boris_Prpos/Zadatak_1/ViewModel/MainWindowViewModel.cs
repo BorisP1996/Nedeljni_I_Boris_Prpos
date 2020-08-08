@@ -111,10 +111,12 @@ namespace Zadatak_1.ViewModel
                 else if (logged.Admin(Username,Password)==2)
                 {
                     MessageBox.Show("Welcome system admin");
+                    SystemAdmin sysAdmin = new SystemAdmin();
+                    sysAdmin.ShowDialog();
                 }
                 else if (logged.Admin(Username,Password)==3)
                 {
-                    MessageBox.Show("Welcome team admin");
+                    MessageBox.Show("Welcome local admin");
                 }
                 else
                 {
