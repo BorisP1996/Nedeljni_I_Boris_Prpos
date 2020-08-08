@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Methods\Delegate.cs" />
+    <Compile Include="Methods\LogIn.cs" />
     <Compile Include="Methods\Tools.cs" />
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>

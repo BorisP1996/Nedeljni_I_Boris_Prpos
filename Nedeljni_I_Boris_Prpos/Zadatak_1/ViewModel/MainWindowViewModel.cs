@@ -11,6 +11,8 @@ namespace Zadatak_1.ViewModel
     {
         MainWindow main;
         Methods.Delegate d = new Methods.Delegate();
+        LogIn logged = new LogIn();
+
         public MainWindowViewModel(MainWindow mainOpen)
         {
             main = mainOpen;
@@ -101,6 +103,22 @@ namespace Zadatak_1.ViewModel
                 {
                     Master master = new Master();
                     master.ShowDialog();
+                }
+                else if (logged.Admin(Username,Password)==1)
+                {
+                    MessageBox.Show("Welcome team admin");
+                }
+                else if (logged.Admin(Username,Password)==2)
+                {
+                    MessageBox.Show("Welcome system admin");
+                }
+                else if (logged.Admin(Username,Password)==3)
+                {
+                    MessageBox.Show("Welcome team admin");
+                }
+                else
+                {
+                    MessageBox.Show("Invalid parametres");
                 }
             }
             catch (Exception ex)
