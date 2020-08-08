@@ -107,6 +107,8 @@ namespace Zadatak_1.ViewModel
                 else if (logged.Admin(Username,Password)==1)
                 {
                     MessageBox.Show("Welcome team admin");
+                    TeamAdmin teamAdmin = new TeamAdmin();
+                    teamAdmin.ShowDialog();
                 }
                 else if (logged.Admin(Username,Password)==2)
                 {

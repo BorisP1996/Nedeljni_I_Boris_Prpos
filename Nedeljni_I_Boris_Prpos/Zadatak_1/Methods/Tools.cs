@@ -431,6 +431,40 @@ namespace Zadatak_1.Methods
                 return false;
             }
         }
+        public List<vwManager> GetVwManager()
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<vwManager> managereList = context.vwManagers.ToList();
+                    return managereList;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return null; 
+            }
+        }
+        public List<vwEmploye> GetVwEmploye()
+        {
+            try
+            {
+                using (Entity context = new Entity())
+                {
+                    List<vwEmploye> employeList = context.vwEmployes.ToList();
+                    return employeList;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
 
     }
 }

@@ -22,8 +22,7 @@
                 Margin="175,345,0,0"
                 Command="{Binding CreatePosition, UpdateSourceTrigger=PropertyChanged}" />
         <Grid Height="250"
-              Width="950"
-              Margin="75,60,-233,109">
+              Margin="75,60,-193,109">
             <DataGrid Name="DataGridUsers"
                       ItemsSource="{Binding SectorList, UpdateSourceTrigger=PropertyChanged}"
                       SelectedItem="{Binding Sector, UpdateSourceTrigger=PropertyChanged}"
@@ -42,7 +41,6 @@
                     <DataGridTextColumn Header="Sector description"
                                         Width="200"
                                         Binding="{Binding SectorDesc}" />
-                    
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -59,7 +57,7 @@
                    Margin="165,-55,0,0"
                    VerticalAlignment="Top"
                    Width="195"
-                   FontSize="26"/>
+                   FontSize="26" />
         </Grid>
         <Button Content="Cancel"
                 HorizontalAlignment="Left"

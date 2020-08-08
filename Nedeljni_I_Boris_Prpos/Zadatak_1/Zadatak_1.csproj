@@ -140,6 +140,7 @@
     <Compile Include="ViewModel\MasterCreatesAdminViewModel.cs" />
     <Compile Include="ViewModel\MasterViewModel.cs" />
     <Compile Include="ViewModel\SystemAdminViewModel.cs" />
+    <Compile Include="ViewModel\TeamAdminViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\CreateEmploye.xaml.cs">
       <DependentUpon>CreateEmploye.xaml</DependentUpon>
@@ -164,6 +165,9 @@
     </Compile>
     <Compile Include="View\SystemAdmin.xaml.cs">
       <DependentUpon>SystemAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TeamAdmin.xaml.cs">
+      <DependentUpon>TeamAdmin.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -206,6 +210,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SystemAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TeamAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

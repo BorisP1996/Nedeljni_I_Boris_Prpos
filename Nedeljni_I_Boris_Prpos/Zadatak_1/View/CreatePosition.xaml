@@ -7,6 +7,41 @@
         mc:Ignorable="d"
         Title="CreatePosition" Height="450" Width="800">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Left"
+                 Height="23"
+                 TextWrapping="Wrap"
+                 Text="{Binding Position.PoisitionName,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Width="120"
+                 Margin="190,37,0,0" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="23"
+                 TextWrapping="Wrap"
+                 Text="{Binding Position.PoisitionDesc,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalAlignment="Top"
+                 Width="120"
+                 Margin="190,106,0,0" />
+        <Label Content="Position name"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Width="95"
+               Margin="50,34,0,0" />
+        <Label Content="Position description"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Width="120"
+               Margin="50,103,0,0" />
+        <Button Content="Save"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="75"
+                Margin="50,355,0,0"
+                Command="{Binding Save,UpdateSourceTrigger=PropertyChanged}" />
+        <Button Content="Close"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="75"
+                Margin="220,355,0,0"
+                Command="{Binding Close,UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
