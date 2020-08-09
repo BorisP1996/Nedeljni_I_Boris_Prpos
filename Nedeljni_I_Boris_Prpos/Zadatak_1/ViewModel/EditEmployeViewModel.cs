@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zadatak_1.Methods;
 using Zadatak_1.Model;
 using Zadatak_1.View;
-using System.ComponentModel;
 using Zadatak_1.Command;
 using System.Windows.Input;
 using System.Windows;
-using Zadatak_1.View;
-using Zadatak_1.Command;
-using Zadatak_1.Methods;
-using Zadatak_1.Model;
-using System.Windows;
-using System.Windows.Input;
 
 namespace Zadatak_1.ViewModel
 {
@@ -28,6 +19,7 @@ namespace Zadatak_1.ViewModel
         public EditEmployeViewModel(EditEmploye editEmpOpen, vwEmploye forwardedEmploye)
         {
             editEmp = editEmpOpen;
+            //catch employe to edit
             User = forwardedEmploye;
             GenderList = tools.GetGenders();
             MarriedList = tools.GetMarried();
@@ -210,7 +202,9 @@ namespace Zadatak_1.ViewModel
                 return save;
             }
         }
-
+        /// <summary>
+        /// Basic edit method
+        /// </summary>
         private void SaveExecute()
         {
             try
@@ -228,7 +222,7 @@ namespace Zadatak_1.ViewModel
                     user.MariageID = Married.MarriedID;
                     user.UserId = User.UserId;
                     context.SaveChanges();
-                    if (tools.ValiationJMBG(User.JMBG) == true /*&& tools.CheckCredentials(user.Username, user.Pasword, user.JMBG) == true && tools.GetRandomMenager() != 0*/)
+                    if (tools.ValiationJMBG(User.JMBG) == true )
                     {
 
                         tblEmploye newEmploye = (from r in context.tblEmployes where r.EmployeID == User.EmployeID select r).FirstOrDefault();
@@ -240,7 +234,6 @@ namespace Zadatak_1.ViewModel
                         }
                         newEmploye.SectorID = Sector.SectorID;
                         newEmploye.EducationID = Education.EducationID;
-                        //newEmploye.ManagerID = tools.GetRandomMenager();
                         context.SaveChanges();
                         MessageBox.Show("Employe is updated");
                         //Update = true;                          

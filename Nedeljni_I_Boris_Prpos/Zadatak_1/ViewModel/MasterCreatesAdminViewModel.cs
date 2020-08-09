@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Zadatak_1.Command;
@@ -166,7 +163,9 @@ namespace Zadatak_1.ViewModel
                 return save;
             }
         }
-
+        /// <summary>
+        /// Method creates admin and validates unique paramtres
+        /// </summary>
         private void SaveExecute()
         {
             try

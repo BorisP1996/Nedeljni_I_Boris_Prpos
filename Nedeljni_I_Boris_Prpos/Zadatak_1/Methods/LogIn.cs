@@ -64,5 +64,81 @@ namespace Zadatak_1.Methods
                 return 0;
             }
         }
+        public bool EmployeLoged(string username,string pasword)
+        {
+            try
+            {
+                List<tblUser> userList = context.tblUsers.ToList();
+                List<tblEmploye> employeList = context.tblEmployes.ToList();
+
+                foreach (tblUser item in userList)
+                {
+                    if (item.Username==username && item.Pasword==pasword)
+                    {
+                        foreach (tblEmploye item1 in employeList)
+                        {
+                            if (item1.UserID==item.UserId)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+        }
+        public bool ManagerLoged(string username, string pasword)
+        {
+            try
+            {
+                List<tblUser> userList = new List<tblUser>();
+                userList=context.tblUsers.ToList();
+                List<tblManager> managerList = new List<tblManager>();
+                managerList=context.tblManagers.ToList();
+
+                foreach (tblUser item in userList)
+                {
+                    if (item.Username == username && item.Pasword == pasword)
+                    {
+                        foreach (tblManager item1 in managerList)
+                        {
+                            if (item1.UserID == item.UserId)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+                return false;
+            }
+        }
     }
 }

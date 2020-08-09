@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zadatak_1.Methods;
 using Zadatak_1.Model;
 using Zadatak_1.View;
-using System.ComponentModel;
 using Zadatak_1.Command;
 using System.Windows.Input;
 using System.Windows;
@@ -56,7 +52,9 @@ namespace Zadatak_1.ViewModel
                 return save;
             }
         }
-
+        /// <summary>
+        /// Sector list has capacity of 15 slots,after that it is not possible to create new sector...also name must be unique
+        /// </summary>
         private void SaveSectorExecute()
         {
             try

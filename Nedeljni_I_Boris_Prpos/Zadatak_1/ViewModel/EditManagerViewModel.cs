@@ -1,21 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zadatak_1.Methods;
 using Zadatak_1.Model;
 using Zadatak_1.View;
-using System.ComponentModel;
 using Zadatak_1.Command;
 using System.Windows.Input;
 using System.Windows;
-using Zadatak_1.View;
-using Zadatak_1.Command;
-using Zadatak_1.Methods;
-using Zadatak_1.Model;
-using System.Windows;
-using System.Windows.Input;
 
 namespace Zadatak_1.ViewModel
 {
@@ -25,9 +16,10 @@ namespace Zadatak_1.ViewModel
         Tools tools = new Tools();
         Entity context = new Entity();
 
-        public EditManagerViewModel(EditManager editManOpen,vwManager forwardedManager)
+        public EditManagerViewModel(EditManager editManOpen, vwManager forwardedManager)
         {
             editMan = editManOpen;
+            //catch manager to edit
             Manager = forwardedManager;
             GenderList = tools.GetGenders();
             MarriedList = tools.GetMarried();
@@ -40,7 +32,9 @@ namespace Zadatak_1.ViewModel
         public vwManager Manager
         {
             get { return manager; }
-            set { manager = value;
+            set
+            {
+                manager = value;
                 OnPropertyChanged("Manager");
             }
         }
@@ -144,18 +138,18 @@ namespace Zadatak_1.ViewModel
                     user.Place = Manager.Place;
                     user.GenderID = Gender.GenderID;
                     user.MariageID = Married.MarriedID;
-                    
+
                     user.UserId = Manager.UserId;
                     tblManager newManager = (from r in context.tblManagers where r.ManagerID == Manager.ManagerID select r).FirstOrDefault();
                     newManager.HelpPass = Manager.HelpPass + "WPF";
                     newManager.OfficeNumber = Manager.OfficeNumber;
                     newManager.Mail = Manager.Mail;
                     newManager.ProjectsDone = Manager.ProjectsDone;
-                    
+
                     newManager.ManagerID = Manager.ManagerID;
-                    if (tools.ValiationJMBG(user.JMBG) == true /*&& tools.CheckCredentials(user.Username, user.Pasword, user.JMBG) == true && tools.CheckMailPas(newManager.Mail, newManager.HelpPass)*/)
+                    if (tools.ValiationJMBG(user.JMBG) == true)
                     {
-                       
+
                         context.SaveChanges();
                         MessageBox.Show("Manager is edited");
                         //Update = true;

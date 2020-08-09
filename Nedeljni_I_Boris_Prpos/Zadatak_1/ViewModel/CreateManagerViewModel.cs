@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zadatak_1.View;
 using Zadatak_1.Command;
 using Zadatak_1.Methods;
@@ -134,7 +131,9 @@ namespace Zadatak_1.ViewModel
                 return save;
             }
         }
-
+        /// <summary>
+        /// Basic save method with validation methods
+        /// </summary>
         private void SaveExecute()
         {
             try

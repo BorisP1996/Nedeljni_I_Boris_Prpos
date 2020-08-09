@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Zadatak_1.View;
 using Zadatak_1.Command;
 using Zadatak_1.Methods;
-using Zadatak_1.Model;
 using System.Windows;
 using System.Windows.Input;
 
@@ -20,7 +15,9 @@ namespace Zadatak_1.ViewModel
         public CreateManagerPasswordViewModel(CreateManagerPassword cmpOpen)
         {
             cmp = cmpOpen;
+            //set count, user can guess the password 3 times
             Count = 3;
+            //get key from file, ih user gueses it in 3 tries=>can continue
             Key = tool.ReadKey();
         }
         private int count;
@@ -44,7 +41,9 @@ namespace Zadatak_1.ViewModel
         public string Password
         {
             get { return password; }
-            set { password = value;
+            set
+            {
+                password = value;
                 OnPropertyChanged("Password");
             }
         }
@@ -87,29 +86,29 @@ namespace Zadatak_1.ViewModel
         {
             try
             {
-               
-                    if (Key != Password)
-                    {
-                        Count--;
-                        MessageBox.Show("Wrong password, you have " + Count + " more attempts.");
-                    }
-                    else
-                    {
-                        cmp.Close();
-                        CreateManager cm = new CreateManager();
-                        cm.ShowDialog();
-                    }
-                
-               
+                //if input is wrong,decrement count (initialy it is 3, see in ctor)
+                if (Key != Password)
+                {
+                    Count--;
+                    MessageBox.Show("Wrong password, you have " + Count + " more attempts.");
+                }
+                //if key is correct, go on to create manager
+                else
+                {
+                    cmp.Close();
+                    CreateManager cm = new CreateManager();
+                    cm.ShowDialog();
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
         }
+        //cant click if count is decremented to zero
         private bool CanSaveExecute()
         {
-            if (String.IsNullOrEmpty(Password) || Count<=0)
+            if (String.IsNullOrEmpty(Password) || Count <= 0)
             {
                 return false;
             }

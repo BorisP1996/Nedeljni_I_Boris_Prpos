@@ -1,27 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
+using Zadatak_1.Command;
 using Zadatak_1.Methods;
 using Zadatak_1.Model;
 using Zadatak_1.View;
-using System.ComponentModel;
-using Zadatak_1.Command;
-using System.Windows.Input;
-using System.Windows;
 
 namespace Zadatak_1.ViewModel
 {
-    class TeamAdminViewModel : ViewModelBase
+    class LocalAdminViewModel : ViewModelBase
     {
-        TeamAdmin teamAdmin;
+        LocalAdmin localAdmin;
         Entity context = new Entity();
         Tools tool = new Tools();
 
-        public TeamAdminViewModel(TeamAdmin teamAdmOpen)
+        public LocalAdminViewModel(LocalAdmin localAdminOpen)
         {
-            teamAdmin = teamAdmOpen;
+            localAdmin = localAdminOpen;
             ListEmploye = tool.GetVwEmploye();
             ListManager = tool.GetVwManager();
         }
@@ -87,7 +84,7 @@ namespace Zadatak_1.ViewModel
         }
         private void CloseExecute()
         {
-            teamAdmin.Close();
+            localAdmin.Close();
         }
         private bool CanCloseExecute()
         {
@@ -106,7 +103,7 @@ namespace Zadatak_1.ViewModel
             }
         }
         /// <summary>
-        /// Method deletes employe
+        /// Click on this button deletes employe
         /// </summary>
         private void DelEmpExecute()
         {
@@ -158,7 +155,6 @@ namespace Zadatak_1.ViewModel
                 return editEmp;
             }
         }
-        //open window to edit employe
         private void EditEmpExecute()
         {
             try
@@ -183,114 +179,30 @@ namespace Zadatak_1.ViewModel
                 return true;
             }
         }
-        private ICommand editMan;
-        public ICommand EditMan
-        {
-            get
-            {
-                if (editMan == null)
-                {
-                    editMan = new RelayCommand(param => EditManExecute(), param => CanEditManExecute());
-                }
-                return editMan;
-            }
-        }
-        private void EditManExecute()
-        {
-            try
-            {
-                EditManager editMan = new EditManager(ViewManager);
-                editMan.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-
-            }
-        }
-        private bool CanEditManExecute()
-        {
-            if (ViewManager == null)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-        private ICommand deleteMan;
-        public ICommand DeleteMan
-        {
-            get
-            {
-                if (deleteMan == null)
-                {
-                    deleteMan = new RelayCommand(param => DeleteManExecute(), param => CanDeleteManExecute());
-                }
-                return deleteMan;
-            }
-        }
         /// <summary>
-        /// if tehre are users which refer to manager, they must be deleted first, and than the manager
+        /// Command that open window to assign duty level
         /// </summary>
-        private void DeleteManExecute()
+        private ICommand assign;
+        public ICommand Assign
+        {
+            get
+            {
+                if (assign == null)
+                {
+                    assign = new RelayCommand(param => AssignExecute(), param => CanAssignExecute());
+                }
+                return assign;
+            }
+        }
+        private void AssignExecute()
         {
             try
             {
-                int count = 0;
-                List<tblEmploye> employeList = context.tblEmployes.ToList();
-
-                foreach (tblEmploye item in employeList)
+                AssignDuty assignDuty = new AssignDuty(viewManager);
+                assignDuty.ShowDialog();
+                if((assignDuty.DataContext as AssignDutyViewModel).Update == true)
                 {
-                    if (item.ManagerID == ViewManager.ManagerID)
-                    {
-                        MessageBoxButton btnMessageBox1 = MessageBoxButton.YesNo;
-                        MessageBoxImage icnMessageBox1 = MessageBoxImage.Warning;
-
-                        //if someone works for manager
-                        MessageBoxResult resultMessageBox1 = MessageBox.Show("Are you sure you want to delete manager?\nYou also have to delete every employe that refers to this manager", "Warning", btnMessageBox1, icnMessageBox1);
-
-                        if (resultMessageBox1 == MessageBoxResult.Yes)
-                        {
-                            foreach (tblEmploye item1 in employeList)
-                            {
-                                if (item1.ManagerID == ViewManager.ManagerID)
-                                {
-                                    context.tblEmployes.Remove(item1);
-                                    tblUser viaUser = (from r in context.tblUsers where r.UserId == item1.UserID select r).FirstOrDefault();
-                                    context.tblUsers.Remove(viaUser);
-                                    count++;
-                                    context.SaveChanges();
-                                }
-                            }
-                        }
-                        tblManager viaManager = (from r in context.tblManagers where r.UserID == ViewManager.UserId select r).FirstOrDefault();
-                        context.tblManagers.Remove(viaManager);
-                        tblUser viaUser1 = (from r in context.tblUsers where r.UserId == viaManager.UserID select r).FirstOrDefault();
-                        context.tblUsers.Remove(viaUser1);
-                        context.SaveChanges();
-                        ListManager = tool.GetVwManager();
-                        ListEmploye = tool.GetVwEmploye();
-                        MessageBox.Show("Manager is deleted.\nNumber of employes deleted: " + count);
-                    }
-                }
-                //if nobody works for menager
-
-                MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
-                MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
-
-                MessageBoxResult resultMessageBox = MessageBox.Show("Are you sure you want to delete manager?", "Warning", btnMessageBox, icnMessageBox);
-
-                if (resultMessageBox == MessageBoxResult.Yes)
-                {
-                    tblManager viaManager = (from r in context.tblManagers where r.UserID == ViewManager.UserId select r).FirstOrDefault();
-                    context.tblManagers.Remove(viaManager);
-                    tblUser viaUser1 = (from r in context.tblUsers where r.UserId == viaManager.UserID select r).FirstOrDefault();
-                    context.tblUsers.Remove(viaUser1);
-                    context.SaveChanges();
                     ListManager = tool.GetVwManager();
-                    MessageBox.Show("Manager is deleted.");
                 }
             }
             catch (Exception ex)
@@ -299,7 +211,7 @@ namespace Zadatak_1.ViewModel
 
             }
         }
-        private bool CanDeleteManExecute()
+        private bool CanAssignExecute()
         {
             if (ViewManager == null)
             {
@@ -310,6 +222,6 @@ namespace Zadatak_1.ViewModel
                 return true;
             }
         }
-
+             
     }
 }

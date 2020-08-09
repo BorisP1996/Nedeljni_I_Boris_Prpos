@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Zadatak_1.Command;
@@ -212,6 +209,7 @@ namespace Zadatak_1.ViewModel
             {
                 using (Entity context = new Entity())
                 {
+                    //cant create employe if there are not any manager, this method finds random manager
                     if (tools.GetRandomMenager() == 0)
                     {
                         MessageBox.Show("Not possible to create employe because there is not any manager created.");
@@ -227,7 +225,7 @@ namespace Zadatak_1.ViewModel
                         user.Place = User.Place;
                         user.GenderID = Gender.GenderID;
                         user.MariageID = Married.MarriedID;
-
+                        //validate jmbg,username,passwrod...
                         if (tools.ValiationJMBG(User.JMBG) == true && tools.CheckCredentials(user.Username, user.Pasword, user.JMBG) == true && tools.GetRandomMenager() != 0)
                         {
                             context.tblUsers.Add(user);

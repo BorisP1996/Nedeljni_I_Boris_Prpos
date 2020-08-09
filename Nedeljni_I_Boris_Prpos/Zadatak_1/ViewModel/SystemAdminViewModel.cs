@@ -70,7 +70,9 @@ namespace Zadatak_1.ViewModel
                 return createPosition;
             }
         }
-
+        /// <summary>
+        /// Openn window to create position
+        /// </summary>
         private void CreatePositionExecute()
         {
             try
@@ -101,7 +103,9 @@ namespace Zadatak_1.ViewModel
                 return createSector;
             }
         }
-
+        /// <summary>
+        /// Open window to create sector
+        /// </summary>
         private void CreateSectorExecute()
         {
             try
@@ -136,7 +140,9 @@ namespace Zadatak_1.ViewModel
                 return deleteSector;
             }
         }
-
+        /// <summary>
+        /// Button inserted into table, deletes sector
+        /// </summary>
         private void DeleteSectorExecute()
         {
             try
@@ -154,6 +160,7 @@ namespace Zadatak_1.ViewModel
 
                     foreach (tblEmploye item in employeList)
                     {
+                        //if employe has deleted sector, he gets default sector instead
                         if (item.SectorID==Sector.SectorID)
                         {
                             tblSector defaultSector = (from r in context.tblSectors where r.SectorName == "Default" select r).FirstOrDefault();
@@ -167,6 +174,7 @@ namespace Zadatak_1.ViewModel
                     context.tblSectors.Remove(viaSector);
                     context.SaveChanges();
                     SectorList = tool.GetSector();
+                    //this is poenta
                     MessageBox.Show("Sector is deleted\nAll employes that where in this sector are now assigned in default sector.");
                 }
 

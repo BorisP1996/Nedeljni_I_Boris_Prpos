@@ -18,6 +18,7 @@ namespace Zadatak_1.ViewModel
             main = mainOpen;
             //random 8 letter string into file, will be used for login
             d.GenerateKey();
+            //for determining if button can be clicked
             Count = 0;
         }
 
@@ -119,6 +120,16 @@ namespace Zadatak_1.ViewModel
                 else if (logged.Admin(Username,Password)==3)
                 {
                     MessageBox.Show("Welcome local admin");
+                    LocalAdmin localAdmin = new LocalAdmin();
+                    localAdmin.ShowDialog();
+                }
+                else if (logged.EmployeLoged(Username, Password) == true)
+                {
+                    MessageBox.Show("Welcome employe");
+                }
+                else if (logged.ManagerLoged(Username, Password) == true)
+                {
+                    MessageBox.Show("Welcome manager");
                 }
                 else
                 {
@@ -160,6 +171,7 @@ namespace Zadatak_1.ViewModel
             {
                 CreateManagerPassword cmp = new CreateManagerPassword();
                 cmp.ShowDialog();
+                //when count is 1, button cant be clicked anymore,initialy it is 0, therefore it can be clicked once only
                 Count = 1;
             }
             catch (Exception ex)
