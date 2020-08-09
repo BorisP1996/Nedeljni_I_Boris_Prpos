@@ -151,7 +151,8 @@ namespace Zadatak_1.ViewModel
         {
             try
             {
-                MessageBox.Show("edit emp");
+                EditEmploye editEmploye = new EditEmploye(ViewEmploye);
+                editEmploye.ShowDialog();
             }
             catch (Exception ex)
             {

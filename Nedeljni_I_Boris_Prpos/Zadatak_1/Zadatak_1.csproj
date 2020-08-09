@@ -136,6 +136,7 @@
     <Compile Include="ViewModel\CreateManagerViewModel.cs" />
     <Compile Include="ViewModel\CreatePositionViewModel.cs" />
     <Compile Include="ViewModel\CreateSectorViewModel.cs" />
+    <Compile Include="ViewModel\EditEmployeViewModel.cs" />
     <Compile Include="ViewModel\EditManagerViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MasterCreatesAdminViewModel.cs" />
@@ -157,6 +158,9 @@
     </Compile>
     <Compile Include="View\CreateSector.xaml.cs">
       <DependentUpon>CreateSector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EditEmploye.xaml.cs">
+      <DependentUpon>EditEmploye.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\EditManager.xaml.cs">
       <DependentUpon>EditManager.xaml</DependentUpon>
@@ -202,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CreateSector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditEmploye.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
