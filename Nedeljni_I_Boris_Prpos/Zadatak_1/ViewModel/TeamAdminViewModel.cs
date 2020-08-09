@@ -101,12 +101,27 @@ namespace Zadatak_1.ViewModel
         {
             try
             {
-                MessageBox.Show("Del emp");
+                MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+                MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+                MessageBoxResult resultMessageBox = MessageBox.Show("Are you sure you want to delete employe?", "Warning", btnMessageBox, icnMessageBox);
+
+                if (resultMessageBox == MessageBoxResult.Yes)
+                {
+                    tblEmploye viaEmploye = (from r in context.tblEmployes where r.UserID == ViewEmploye.UserId select r).FirstOrDefault();
+                    context.tblEmployes.Remove(viaEmploye);
+                    tblUser viaUser = (from r in context.tblUsers where r.UserId == viaEmploye.UserID select r).FirstOrDefault();
+                    context.tblUsers.Remove(viaUser);
+                    context.SaveChanges();
+                    MessageBox.Show("Employe is deleted");
+                    context.SaveChanges();
+                    ListEmploye = tool.GetVwEmploye();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                throw;
+                
             }
         }
         private bool CanDelEmpExecute()
@@ -141,7 +156,7 @@ namespace Zadatak_1.ViewModel
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                throw;
+                
             }
         }
         private bool CanEditEmpExecute()
@@ -171,12 +186,13 @@ namespace Zadatak_1.ViewModel
         {
             try
             {
-                MessageBox.Show("edit man");
+                EditManager editMan = new EditManager(ViewManager);
+                editMan.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                throw;
+                
             }
         }
         private bool CanEditManExecute()
@@ -202,16 +218,69 @@ namespace Zadatak_1.ViewModel
                 return deleteMan;
             }
         }
+        /// <summary>
+        /// if tehre are users which refer to manager, they must be deleted first, and than the manager
+        /// </summary>
         private void DeleteManExecute()
         {
             try
             {
-                MessageBox.Show("delete man");
+                int count = 0;
+                List<tblEmploye> employeList = context.tblEmployes.ToList();
+
+                foreach (tblEmploye item in employeList)
+                {
+                    if (item.ManagerID == ViewManager.ManagerID)
+                    {
+                        MessageBoxButton btnMessageBox1 = MessageBoxButton.YesNo;
+                        MessageBoxImage icnMessageBox1 = MessageBoxImage.Warning;
+
+                        MessageBoxResult resultMessageBox1 = MessageBox.Show("Are you sure you want to delete manager?\nYou also have to delete every employe that refers to this manager", "Warning", btnMessageBox1, icnMessageBox1);
+
+                        if (resultMessageBox1 == MessageBoxResult.Yes)
+                        {
+                            foreach (tblEmploye item1 in employeList)
+                            {
+                                if (item1.ManagerID == ViewManager.ManagerID)
+                                {
+                                    context.tblEmployes.Remove(item1);
+                                    tblUser viaUser = (from r in context.tblUsers where r.UserId == item1.UserID select r).FirstOrDefault();
+                                    context.tblUsers.Remove(viaUser);
+                                    count++;
+                                    context.SaveChanges();
+                                }
+                            }
+                        }
+                        tblManager viaManager = (from r in context.tblManagers where r.UserID == ViewManager.UserId select r).FirstOrDefault();
+                        context.tblManagers.Remove(viaManager);
+                        tblUser viaUser1 = (from r in context.tblUsers where r.UserId == viaManager.UserID select r).FirstOrDefault();
+                        context.tblUsers.Remove(viaUser1);
+                        context.SaveChanges();
+                        ListManager = tool.GetVwManager();
+                        ListEmploye = tool.GetVwEmploye();
+                        MessageBox.Show("Manager is deleted.\nNumber of employes deleted: " + count);
+                    }
+                }
+                    MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+                    MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+                    MessageBoxResult resultMessageBox = MessageBox.Show("Are you sure you want to delete manager?","Warning", btnMessageBox, icnMessageBox);
+
+                    if (resultMessageBox == MessageBoxResult.Yes)
+                    {
+                        tblManager viaManager = (from r in context.tblManagers where r.UserID == ViewManager.UserId select r).FirstOrDefault();
+                        context.tblManagers.Remove(viaManager);
+                        tblUser viaUser1 = (from r in context.tblUsers where r.UserId == viaManager.UserID select r).FirstOrDefault();
+                        context.tblUsers.Remove(viaUser1);
+                        context.SaveChanges();
+                        ListManager = tool.GetVwManager();
+                        MessageBox.Show("Manager is deleted.");
+                    }               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                throw;
+                
             }
         }
         private bool CanDeleteManExecute()
