@@ -10,21 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Zadatak_1.ViewModel;
 
-namespace Zadatak_1
+namespace Zadatak_1.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CreateManagerPassword.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CreateManagerPassword : Window
     {
-        public MainWindow()
+        public CreateManagerPassword()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel(this);
+            this.DataContext = new CreateManagerPasswordViewModel(this);
         }
     }
 }

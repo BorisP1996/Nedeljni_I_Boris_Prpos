@@ -1,0 +1,185 @@
+﻿<Window x:Class="Zadatak_1.View.TeamAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zadatak_1.View"
+        mc:Ignorable="d"
+        Title="TeamAdmin"
+        Height="707"
+        Width="989">
+    <Grid Margin="0,0,2,-1">
+       
+            <DataGrid Name="DataGridUsers"
+                      ItemsSource="{Binding ListManager, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedItem="{Binding ViewManager, UpdateSourceTrigger=PropertyChanged}"
+                      IsReadOnly="True"
+                      HeadersVisibility="Column"
+                      AutoGenerateColumns="False"
+                      HorizontalGridLinesBrush="Black"
+                      BorderBrush="Black"
+                      Foreground="Black"
+                      FontWeight="Bold"
+                  Margin="36,70,94,402">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"
+                                        Width="100"
+                                        Binding="{Binding Firstname}" />
+                    <DataGridTextColumn Header="Surname"
+                                        Width="100"
+                                        Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="JMBG"
+                                    Width="100"
+                                    Binding="{Binding JMBG}" />
+                <DataGridTextColumn Header="Place"
+                                    Width="100"
+                                    Binding="{Binding Place}" />
+                <DataGridTextColumn Header="Username"
+                                    Width="100"
+                                    Binding="{Binding Username}" />
+                <DataGridTextColumn Header="Password"
+                                    Width="100"
+                                    Binding="{Binding Pasword}" />
+                <DataGridTextColumn Header="Help password"
+                                    Width="100"
+                                    Binding="{Binding HelpPass}" />
+                <DataGridTextColumn Header="Mail"
+                                    Width="100"
+                                    Binding="{Binding Mail}" />
+                <DataGridTextColumn Header="Salary"
+                                    Width="100"
+                                    Binding="{Binding Salary}" />
+                <DataGridTextColumn Header="Gender ID"
+                                    Width="100"
+                                    Binding="{Binding GenderID}" />
+                <DataGridTextColumn Header="Marriage ID"
+                                    Width="100"
+                                    Binding="{Binding MariageID}" />
+                <DataGridTextColumn Header="Duty level"
+                                    Width="100"
+                                    Binding="{Binding DutyLevel}" />
+                <DataGridTextColumn Header="Projects done"
+                                    Width="100"
+                                    Binding="{Binding ProjectsDone}" />
+                <DataGridTextColumn Header="Office number"
+                                    Width="100"
+                                    Binding="{Binding OfficeNumber}" />
+                <DataGridTextColumn Header="ManagerID"
+                                    Width="100"
+                                    Binding="{Binding ManagerID}" />
+                <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button  Command="{Binding Path=DataContext.DeleteMan, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}},UpdateSourceTrigger=PropertyChanged}"
+                                         Content="Delete" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Command="{Binding Path=DataContext.EditMan, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}},UpdateSourceTrigger=PropertyChanged}"
+                                     Content="Edit" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Employe list"
+                   HorizontalAlignment="Left"
+               Margin="36,305,0,0"
+               VerticalAlignment="Top"
+                   Width="195"
+                   FontSize="26" />
+        
+        <Button Content="Cancel"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="100"
+                Margin="830,625,0,-28"
+                Command="{Binding Close, UpdateSourceTrigger=PropertyChanged}" />
+        
+        <Label Content="Manager list"
+               HorizontalAlignment="Left"
+               Margin="36,10,0,0"
+               VerticalAlignment="Top"
+               Width="195"
+               FontSize="26" />
+        <DataGrid Name="DataGridUsers1"
+                  ItemsSource="{Binding ListEmploye, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding ViewEmploye, UpdateSourceTrigger=PropertyChanged}"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  AutoGenerateColumns="False"
+                  HorizontalGridLinesBrush="Black"
+                  BorderBrush="Black"
+                  Foreground="Black"
+                  FontWeight="Bold"
+                  Margin="36,380,94,92">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Width="100"
+                                    Binding="{Binding Firstname}" />
+                <DataGridTextColumn Header="Surname"
+                                    Width="100"
+                                    Binding="{Binding Lastname}" />
+                <DataGridTextColumn Header="JMBG"
+                                    Width="100"
+                                    Binding="{Binding JMBG}" />
+                <DataGridTextColumn Header="Place"
+                                    Width="100"
+                                    Binding="{Binding Place}" />
+                <DataGridTextColumn Header="Username"
+                                    Width="100"
+                                    Binding="{Binding Username}" />
+                <DataGridTextColumn Header="Pasword"
+                                    Width="100"
+                                    Binding="{Binding Pasword}" />
+                <DataGridTextColumn Header="Education ID"
+                                    Width="100"
+                                    Binding="{Binding EducationID}" />
+                <DataGridTextColumn Header="Salary"
+                                    Width="100"
+                                    Binding="{Binding Salary}" />
+                <DataGridTextColumn Header="Gender ID"
+                                    Width="100"
+                                    Binding="{Binding GenderID}" />
+                <DataGridTextColumn Header="Marriage ID"
+                                    Width="100"
+                                    Binding="{Binding MariageID}" />
+                <DataGridTextColumn Header="Sector ID"
+                                    Width="100"
+                                    Binding="{Binding SectorID}" />
+                <DataGridTextColumn Header="Position ID"
+                                    Width="100"
+                                    Binding="{Binding PositionID}" />
+                <DataGridTextColumn Header="Experience year"
+                                    Width="100"
+                                    Binding="{Binding ExperienceYear}" />
+                <DataGridTextColumn Header="ManagerID"
+                                    Width="100"
+                                    Binding="{Binding ManagerID}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Command="{Binding Path=DataContext.DelEmp, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}},UpdateSourceTrigger=PropertyChanged}"
+                                     Content="Delete" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Command="{Binding Path=DataContext.EditEmp, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}},UpdateSourceTrigger=PropertyChanged}"
+                                     Content="Edit" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
