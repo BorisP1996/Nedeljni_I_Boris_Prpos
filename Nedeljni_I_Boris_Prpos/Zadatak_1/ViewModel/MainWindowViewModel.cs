@@ -126,10 +126,14 @@ namespace Zadatak_1.ViewModel
                 else if (logged.EmployeLoged(Username, Password) == true)
                 {
                     MessageBox.Show("Welcome employe");
+                    EmployeWindow empWindow = new EmployeWindow();
+                    empWindow.ShowDialog();
                 }
                 else if (logged.ManagerLoged(Username, Password) == true)
                 {
                     MessageBox.Show("Welcome manager");
+                    ManagerWindow manWindow = new ManagerWindow();
+                    manWindow.ShowDialog();
                 }
                 else
                 {

@@ -170,8 +170,14 @@
     <Compile Include="View\EditManager.xaml.cs">
       <DependentUpon>EditManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EmployeWindow.xaml.cs">
+      <DependentUpon>EmployeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LocalAdmin.xaml.cs">
       <DependentUpon>LocalAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagerWindow.xaml.cs">
+      <DependentUpon>ManagerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Master.xaml.cs">
       <DependentUpon>Master.xaml</DependentUpon>
@@ -229,7 +235,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EmployeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LocalAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManagerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
